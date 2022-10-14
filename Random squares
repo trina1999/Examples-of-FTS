@@ -1,0 +1,33 @@
+let squareSize = 0;
+let maxSquareSize;
+
+function setup() {
+  createCanvas(300, 300);
+  rectMode(CENTER);
+  maxSquareSize = width;
+
+  noStroke();
+  fill(random(255), random(255), random(255));
+  background(50);
+}
+
+function draw() {
+
+  square(width/2, height/2, squareSize);
+
+  squareSize += 5;
+
+  // if the square gets too big, start a new square
+  if(squareSize >= maxSquareSize){
+    squareSize = 0;
+    fill(random(255), random(255), random(255));
+
+    // make the next square smaller
+    maxSquareSize -= 10;
+
+    // if the square gets too small, make the next one big again
+    if(maxSquareSize <= 0){
+      maxSquareSize = width;
+    }
+  }  
+}
